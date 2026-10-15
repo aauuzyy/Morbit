@@ -1,0 +1,12 @@
+# build artifacts
+dist/
+build/
+*.egg-info/
+
+# python cache
+__pycache__/
+*.pyc
+
+# morbit protect-python test byproducts
+*.lock.morbit
+*.source.bak
