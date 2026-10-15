@@ -275,8 +275,10 @@ def protect_python(
     payload_tmp = payload.with_name(payload.name + ".tmp")
     loader_tmp = script.with_name(script.name + ".morbit-tmp")
     try:
-        payload_tmp.write_text(encoded, encoding="ascii", newline="")
-        loader_tmp.write_text(loader, encoding="utf-8", newline="")
+        with open(payload_tmp, "w", encoding="ascii", newline="") as fh:
+            fh.write(encoded)
+        with open(loader_tmp, "w", encoding="utf-8", newline="") as fh:
+            fh.write(loader)
         os.chmod(loader_tmp, script.stat().st_mode)
         if backup:
             backup_path.write_bytes(original)
